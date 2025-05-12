@@ -1,0 +1,26 @@
+# Ignorar archivos y carpetas innecesarias
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Archivos de configuración locales
+.env
+*.env
+
+# Archivos de control de versiones
+.git/
+.gitignore
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de desarrollo
+*.swp
+*.swo
+*.bak
+
+# Archivos de compilación o dependencias locales
+node_modules/
+.vscode/
