@@ -21,14 +21,16 @@ WORKDIR /app
 # Copia los archivos del proyecto al contenedor
 COPY . /app
 
+RUN mkdir -p /app/backend/octave && chmod -R 755 /app/backend/octave
+
 # Establece la variable de entorno PYTHONPATH
 ENV PYTHONPATH=/app
 
 # Instala las dependencias de Python
 RUN pip3 install -r requirements.txt
 
-# Expone el puerto para Flask
-EXPOSE 5000
+# Expone los puertos para Flask y Streamlit
+EXPOSE 5000 8501
 
-# Comando para ejecutar el servidor Flask
-CMD ["python3", "backend/run.py"]
+# Comando para ejecutar ambos servidores (Flask y Streamlit)
+CMD ["sh", "-c", "python3 run.py & streamlit run frontend/app.py --server.port=8501 --server.address=0.0.0.0"]
